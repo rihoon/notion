@@ -11,7 +11,7 @@
         body{
             text-align: center;
             font-family: 'Fjalla One', sans-serif;
-            background-color: #000000;
+            background-color: #fff;
         }
         .box{
             display: inline-block;
@@ -21,13 +21,13 @@
             border-radius: 5px;
         }
         #days{
-            background-color:#efefef;
+            background-color:#0f4d4f;
         }
         #hours{
-            background-color:#efefef;
+            background-color:#4CAF50;
         }
         #minutes{
-            background-color:#efefef;
+            background-color:#76250b;
         }
         h2{
             display: inline-block;
@@ -41,7 +41,7 @@
     
     <div id="counter">
     <h2>
-        Time left in This Month
+        다음 카운트다운까지 남은 시간
     </h2>
     
         <h2 class="box" id="days"></h2>
@@ -52,37 +52,28 @@
 
 
 <script>
-function showRemaining() {
-  now = new Date();
-  
-  // 다음 목요일의 날짜를 계산합니다.
-  while (now.getDay() != 4) {
-    now.setDate(now.getDate() + 1);
-  }
-  now.setHours(20, 0, 0, 0);
-  if (now.getTime() <= new Date().getTime()) {
-    now.setDate(now.getDate() + 14);
-  }
-
-  // 목요일 8시까지 남은 시간을 계산합니다.
-  var diff = now.getTime() - new Date().getTime();
-  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-  left_days.innerHTML = days + " days ";
-  left_hours.innerHTML = hours + " hours ";
-  left_minutes.innerHTML = minutes + " mins ";
-}
+    function CountDownTimer() {
+    left_days = document.getElementById("days");
+    left_hours = document.getElementById("hours");
+    left_minutes = document.getElementById("minutes");
+ 
+    }
+    function showRemaining(){
+    now = new Date();
+    next_countdown = new Date(now.getFullYear(), now.getMonth(), 14, 20, 0, 0);
+    if (now > next_countdown) {
+        next_countdown = new Date(now.getFullYear(), now.getMonth(), 28, 20, 0, 0);
+    }
+    days = Math.floor((next_countdown - now) / (1000 * 60 * 60 * 24));
+    hours = Math.floor((next_countdown - now) % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+    minutes = Math.floor((next_countdown - now) % (1000 * 60 * 60) / (1000 * 60));
+    left_days.innerHTML = days + "일 ";
+    left_hours.innerHTML = hours + "시간 ";
+    left_minutes.innerHTML = minutes + "분 ";
+    }
 
 timer = setInterval(showRemaining, 1000);
 CountDownTimer();
-
-    
-    
-    
-    
-    
-    </script>
+</script>
 </body>
 </html>

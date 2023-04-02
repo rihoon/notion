@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+    <title>Time Left in this month</title>
+    <style>
+        
+        body{
+            text-align: center;
+            font-family: 'Fjalla One', sans-serif;
+            background-color: #fff;
+        }
+        .box{
+            display: inline-block;
+            display: inline-block;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #days{
+            background-color:#c9caca;
+        }
+        #hours{
+            background-color:#c9caca;
+        }
+        #minutes{
+            background-color:#c9caca;
+        }
+        h2{
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div id="counter">
+    <h2>
+        우리의 스터디는
+    </h2>
+    
+        <h2 class="box" id="2주마다"></h2>
+        <h2 class="box" id="목요일"></h2>
+        <h2 class="box" id="밤8시"></h2>
+    </div>
+
+
+
+
+</body>
+</html>

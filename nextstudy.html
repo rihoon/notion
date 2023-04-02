@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+    <title>Time Left in this month</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: 'Fjalla One', sans-serif;
+            background-color: #fff;
+        }
+        .box{
+            display: inline-block;
+            display: inline-block;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #days{
+            background-color:#eac166;
+        }
+        #hours{
+            background-color:#eac166;
+        }
+        #minutes{
+            background-color:#eac166;
+        }
+        h2{
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="counter">
+        <h2>다음 스터디는</h2>
+        <h2 class="box" id="days"></h2>
+        <h2 class="box" id="hours"></h2>
+        <h2 class="box" id="minutes"></h2>
+    </div>
+
+    <script>
+        function getNextThursday() {
+            const now = new Date();
+            const start = new Date("2023-04-20T20:00:00");
+            const nextThursday = new Date(start.getTime());
+            
+            while (nextThursday.getTime() <= now.getTime()) {
+                nextThursday.setDate(nextThursday.getDate() + 14);
+            }
+            
+            return nextThursday;
+        }
+        
+        function countdown() {
+            const nextThursday = getNextThursday();
+            const remainingTime = nextThursday.getTime() - Date.now();
+            const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((remainingTime / (1000 * 60)) % 60);
+            
+            document.getElementById("days").innerHTML = `${nextThursday.getMonth()+1}월`;
+            document.getElementById("hours").innerHTML = `${nextThursday.getDate()}일`;
+            document.getElementById("minutes").innerHTML = `오후 8시`;
+            
+            setTimeout(countdown, 1000);
+        }
+        
+        countdown();
+    </script>
+</body>
+</html>
+
+
+
+

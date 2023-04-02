@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>매주 토요일 오전 10시까지 남은 시간</title>
+    <title>다음 스터디까지</title>
     <style>
         body {
             text-align: center;
@@ -58,9 +58,9 @@
             days = Math.floor(time_left / (1000 * 60 * 60 * 24));
             hours = Math.floor((time_left % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             minutes = Math.floor((time_left % (1000 * 60 * 60)) / (1000 * 60));
-            left_days.innerHTML = days + " D ";
-            left_hours.innerHTML = hours + " H ";
-            left_minutes.innerHTML = minutes + " M ";
+            left_days.innerHTML = days + " 일 ";
+            left_hours.innerHTML = hours + " 시간 ";
+            left_minutes.innerHTML = minutes + " 분 ";
         }
         timer = setInterval(showRemaining, 1000);
         CountDownTimer();

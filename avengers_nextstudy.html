@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
-    <title>Time Left in this month</title>
+    <title>Time Left</title>
     <style>
         body{
             text-align: center;
@@ -14,19 +14,18 @@
         }
         .box{
             display: inline-block;
-            display: inline-block;
             color: #fff;
             padding: 10px;
             border-radius: 5px;
         }
-        #days{
-            background-color:#eac166;
+        #month{
+            background-color:#c9c9c9;
         }
-        #hours{
-            background-color:#eac166;
+        #day{
+            background-color:#c9c9c9;
         }
-        #minutes{
-            background-color:#eac166;
+        #time{
+            background-color:#c9c9c9;
         }
         h2{
             display: inline-block;
@@ -36,43 +35,42 @@
 </head>
 <body>
     <div id="counter">
-        <h2>다음 스터디는</h2>
-        <h2 class="box" id="days"></h2>
-        <h2 class="box" id="hours"></h2>
-        <h2 class="box" id="minutes"></h2>
+        <h2>다음 어벤져스 스터디 : </h2>
+        <h2 class="box" id="month"></h2>
+        <h2 class="box" id="day"></h2>
+        <h2 class="box" id="time"></h2>
     </div>
 
     <script>
-        function getNextThursday() {
+        function getNextSaturday() {
             const now = new Date();
-            const start = new Date("2023-04-20T20:00:00");
-            const nextThursday = new Date(start.getTime());
-            
-            while (nextThursday.getTime() <= now.getTime()) {
-                nextThursday.setDate(nextThursday.getDate() + 14);
+            const start = new Date("2023-04-07T10:00:00");
+            const nextSaturday = new Date(start.getTime());
+
+            while (nextSaturday.getTime() <= now.getTime()) {
+                nextSaturday.setDate(nextSaturday.getDate() + 7);
             }
-            
-            return nextThursday;
+
+            return nextSaturday;
         }
-        
+
         function countdown() {
-            const nextThursday = getNextThursday();
-            const remainingTime = nextThursday.getTime() - Date.now();
-            const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((remainingTime / (1000 * 60)) % 60);
-            
-            document.getElementById("days").innerHTML = `${nextThursday.getMonth()+1}월`;
-            document.getElementById("hours").innerHTML = `${nextThursday.getDate()}일`;
-            document.getElementById("minutes").innerHTML = `오후 8시`;
-            
+            const nextSaturday = getNextSaturday();
+            const remainingTime = nextSaturday.getTime() - Date.now();
+            const month = nextSaturday.toLocaleString('default', { month: 'long' });
+            const day = nextSaturday.toLocaleString('default', { day: 'numeric' });
+            const time = nextSaturday.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+
+            document.getElementById("month").innerHTML = month;
+            document.getElementById("day").innerHTML = day;
+            document.getElementById("time").innerHTML = time;
+
             setTimeout(countdown, 1000);
         }
-        
+
         countdown();
     </script>
 </body>
 </html>
-
 
 
